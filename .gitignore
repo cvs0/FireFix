@@ -1,4 +1,5 @@
 *.xpi
 node_modules/
 .idea/
+.vscode/
 web-ext-artifacts/
