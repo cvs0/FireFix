@@ -1,18 +1,12 @@
 let isEnabled = false;
-toggleWebRTC(isEnabled);
+toggleFireFix(isEnabled);
 
 browser.browserAction.onClicked.addListener(handleClick);
 
-/**
- * Toggles WebRTC on and off.
- * @param {boolean=} enable
- */
-function toggleWebRTC(enable = true) {
+function toggleFireFix(enable = true) {
   browser.privacy.network.peerConnectionEnabled.set({ value: enable });
-  browser.privacy.network.webRTCIPHandlingPolicy.set(
-    { value: enable ? 'default' : 'disable_non_proxied_udp' });
-
-
+  browser.privacy.network.webRTCIPHandlingPolicy.set({ value: enable ? 'default' : 'disable_non_proxied_udp' });
+  
   const title = enable ?
     'WebRTC is NOT disabled. Be careful.' :
     'WebRTC is disabled.';
@@ -20,10 +14,10 @@ function toggleWebRTC(enable = true) {
 
   const name = enable ? 'unsafe' : 'safe';
   const path = `images/${name}-64.png`;
+
   browser.browserAction.setIcon({ path });
 }
 
 function handleClick() {
-  isEnabled = !isEnabled;
-  toggleWebRTC(isEnabled);
+  toggleFireFix(!isEnabled);
 }

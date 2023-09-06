@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Disable WebRTC",
+  "name": "FireFix",
   "version": "1.0.23",
 
-  "description": "Disables WebRTC consistently.",
+  "description": "Improves FireFox's privacy and security.",
 
   "commands": {
       "_execute_browser_action": {
@@ -20,7 +20,7 @@
       "48": "images/safe-48.png",
       "64": "images/safe-64.png"
     },
-    "default_title": "Disable WebRTC"
+    "default_title": "FireFix"
   },
 
   "icons": {
@@ -31,9 +31,8 @@
   },
 
   "background": {
-    "scripts": ["js/disable_webrtc.js"]
+    "scripts": ["js/main.js"]
   },
 
   "permissions": ["privacy", "browserSettings"]
-
 }
