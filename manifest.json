@@ -2,17 +2,20 @@
   "manifest_version": 2,
   "name": "FireFix",
   "version": "1.0.23",
-
   "description": "Improves FireFox's privacy and security.",
-
+  "permissions": [
+    "privacy",
+    "browserSettings",
+    "webRequest",
+    "webRequestBlocking"
+  ],
   "commands": {
-      "_execute_browser_action": {
-          "suggested_key": {
-              "default": "Ctrl+Alt+W"
-          }
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+W"
       }
+    }
   },
-
   "browser_action": {
     "default_icon": {
       "16": "images/safe-16.png",
@@ -22,17 +25,13 @@
     },
     "default_title": "FireFix"
   },
-
   "icons": {
     "16": "images/safe-16.png",
     "32": "images/safe-32.png",
     "48": "images/safe-48.png",
     "64": "images/safe-64.png"
   },
-
   "background": {
     "scripts": ["js/main.js"]
-  },
-
-  "permissions": ["privacy", "browserSettings"]
+  }
 }
