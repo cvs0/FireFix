@@ -1,6 +1,8 @@
 // TODO: Define and maintain an up-to-date list of tracking domains.
 const trackingDomains = [
-  "grabify.link",
+
+  //----------------------MISC TRACKING LINKS-----------------------//
+
   "clicky.com",
   "doubleclick.net",
   "google-analytics.com",
@@ -31,6 +33,47 @@ const trackingDomains = [
   "adriver.ru",
   "googletagmanager.com",
   "zamanta.net",
+
+  //----------------------------------------------------------------//
+
+  //--------------------------GRABIFY LINKS-------------------------//
+
+  "grabify.link",
+  "photovault.pics",
+  "bathtub.pics",
+  "foot.wiki",
+  "thisdomainislong.lol",
+  "gamergirl.pro",
+  "picshost.pics",
+  "pichost.pics",
+  "gamertag.shop",
+  "imghost.pics",
+  "imagehost.pics",
+  "toldyouso.lol",
+  "toldyouso.pics",
+  "screenshare.pics",
+  "myprivate.pics",
+  "noodshare.pics",
+  "cheapcinema.club",
+  "shhh.lol",
+  "partpicker.shop",
+  "sportshub.bar",
+  "locations.quest",
+  "lovebird.guru",
+  "trulove.guru",
+  "dateing.club",
+  "shrekis.life",
+  "gaming-at-my.best",
+  "screenshot.best",
+  "gamingfun.me",
+  "catsnthing.com",
+  "catsnthings.fun",
+  "joinmy.site",
+  "fortnitechat.site",
+  "fortnight.space",
+  "stopify.co",
+
+  //----------------------------------------------------------------//
 ];
 
 // initialize isEnabled to false
@@ -46,22 +89,22 @@ browser.browserAction.onClicked.addListener(handleClick);
  * intercept and block requests to known tracking domains.
  * @param {object} details - Request details.
  */
-chrome.webRequest.onBeforeRequest.addListener(
+browser.webRequest.onBeforeRequest.addListener(
   function(details) {
     const url = details.url;
 
-    // check if the request is to a tracking domain
+    // Check if the request is to a tracking domain, and block it if true
     if (isTrackingDomain(url)) {
-      // block the request
       return { cancel: true };
     }
 
-    // allow the request to proceed
+    // Allow the request to proceed
     return { cancel: false };
   },
-  { urls: ["<all_urls>"] }, // match all URLs
+  { urls: ["<all_urls>"] }, // Match all URLs
   ["blocking"]
 );
+
 
 /**
  * check if a URL matches any known tracking domain.
@@ -94,7 +137,11 @@ function toggleFireFix(enable = true) {
 
   // set the icon path based on the state (unsafe or safe)
   const name = enable ? 'unsafe' : 'safe';
-  const path = `images/${name}-64.png`;
+  const path = {
+    "16": `images/${name}-16.png`,
+    "48": `images/${name}-48.png`,
+    "128": `images/${name}-128.png`
+  };
   browser.browserAction.setIcon({ path });
 
   // update the isEnabled variable to match the current state
